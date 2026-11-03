@@ -1,0 +1,124 @@
+{
+ "version": "prompt-index.v1",
+ "status": "DRAFT: drafts for the tuning rounds; none is ratified. Freeze (new versions, status ratified) before the main stalls.",
+ "unit_id_format": {
+  "step": "S{n}",
+  "output": "O{n}",
+  "approach": "A{n}",
+  "item": "I{n}"
+ },
+ "unit_id_format_status": "matches the Ledger renderers (src/trajectory_retention/ledger/render.py)",
+ "prompts": {
+  "review-ledger.v0-draft": {
+   "kind": "review",
+   "arm": "2_ledger_review",
+   "file": "archive/review.v0-draft.md",
+   "view": "ledger",
+   "ledger_examples": true,
+   "tool": "review_decision.v0-draft.json"
+  },
+  "review-context.v0-draft": {
+   "kind": "review",
+   "arm": "3_context_review",
+   "file": "archive/review.v0-draft.md",
+   "view": "context",
+   "ledger_examples": false,
+   "tool": "review_decision.v0-draft.json"
+  },
+  "review-ledger.v1-draft": {
+   "kind": "review",
+   "arm": "2_ledger_review",
+   "arm_set": "v3",
+   "file": "archive/review.v1-draft.md",
+   "view": "ledger_flat",
+   "ledger_examples": true,
+   "tool": "review_decision.v0-draft.json"
+  },
+  "review-context.v1-draft": {
+   "kind": "review",
+   "arm": "3_context_review",
+   "arm_set": "v3",
+   "file": "archive/review.v1-draft.md",
+   "view": "context",
+   "ledger_examples": false,
+   "tool": "review_decision.v0-draft.json"
+  },
+  "readonly-ledger.v1-draft": {
+   "kind": "read_only",
+   "arm": "5_ledger_read_only",
+   "arm_set": "v3",
+   "file": "archive/readonly.v1-draft.md",
+   "view": "ledger_flat",
+   "ledger_reading": true
+  },
+  "readonly-context.v1-draft": {
+   "kind": "read_only",
+   "arm": "6_context_read_only",
+   "arm_set": "v3",
+   "file": "archive/readonly.v1-draft.md",
+   "view": "context",
+   "ledger_reading": false
+  },
+  "note.v0-draft": {
+   "kind": "note",
+   "arm": "5_rewind_own_summary",
+   "file": "archive/note.v0-draft.md"
+  },
+  "reentry-judge.v0-draft": {
+   "kind": "judge",
+   "file": "reentry-judge.v0-draft.md"
+  },
+  "review-ledger.units-v1-draft": {
+   "kind": "review",
+   "arm": "2_ledger_review",
+   "arm_set": "v3",
+   "file": "review.units-v1-draft.md",
+   "view": "ledger_flat",
+   "ledger_examples": true,
+   "tool": "review_decision.v0-draft.json"
+  },
+  "review-context.units-v1-draft": {
+   "kind": "review",
+   "arm": "3_context_review",
+   "arm_set": "v3",
+   "file": "review.units-v1-draft.md",
+   "view": "context",
+   "ledger_examples": false,
+   "tool": "review_decision.v0-draft.json"
+  },
+  "readonly-ledger.units-v1-draft": {
+   "kind": "read_only",
+   "arm": "5_ledger_read_only",
+   "arm_set": "v3",
+   "file": "readonly.units-v1-draft.md",
+   "view": "ledger_flat",
+   "ledger_reading": true
+  },
+  "readonly-context.units-v1-draft": {
+   "kind": "read_only",
+   "arm": "6_context_read_only",
+   "arm_set": "v3",
+   "file": "readonly.units-v1-draft.md",
+   "view": "context",
+   "ledger_reading": false
+  },
+  "review-ledger.units-v1-stalled-draft": {
+   "kind": "review",
+   "arm": "2_ledger_review",
+   "arm_set": "v3",
+   "file": "review.units-v1-stalled-draft.md",
+   "view": "ledger_flat",
+   "ledger_examples": true,
+   "tool": "review_decision.v0-draft.json"
+  },
+  "review-context.units-v1-stalled-draft": {
+   "kind": "review",
+   "arm": "3_context_review",
+   "arm_set": "v3",
+   "file": "review.units-v1-stalled-draft.md",
+   "view": "context",
+   "ledger_examples": false,
+   "tool": "review_decision.v0-draft.json"
+  }
+ }
+}

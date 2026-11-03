@@ -1,0 +1,15 @@
+{
+ "version": "price-card.v1",
+ "unit": "USD per million tokens",
+ "models": {
+  "deepseek/deepseek-v4.1-flash": {
+   "provider": "streamlake/fp8",
+   "input": 0.141,
+   "cached_input": 0.00282,
+   "output": 0.564
+  }
+ },
+ "uncached_rule": "cost_usd_uncached: every input token (cached ones included) at the input price, every generated token (reasoning included) at the output price, summed over the branch's worker attempts whose token counts are known; attempts with unknown counts are counted, never priced",
+ "source": "fitted exactly from the provider-reported cost of the four calls in artifacts/v2/provider-smoke/streamlake-fp8-20261007T184034Z.json (e.g. call 1: 694 input x 0.141 + 122 output x 0.564 = $0.000166662; call 2 adds 640 cached input tokens at 0.00282)",
+ "pin": "configs/v2/settings.json (provider streamlake/fp8)"
+}

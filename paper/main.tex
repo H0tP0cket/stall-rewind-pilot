@@ -1,0 +1,243 @@
+\documentclass{article}
+
+\PassOptionsToPackage{numbers, compress}{natbib}
+\usepackage[preprint]{neurips_2025}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{tabularx}
+
+\definecolor{pilotbg}{HTML}{F4F3EF}
+\newcommand{\arm}[1]{\textsf{#1}}
+
+\title{Will a Coding Agent Rewind Itself? A Pilot of Stall Recovery with Checkpointed Branches}
+
+\author{%
+  Siddharth Srinivasan\\
+  University of California, Berkeley\\
+  \texttt{sidsrinivasan@berkeley.edu}
+}
+
+\begin{document}
+
+\maketitle
+
+\noindent\colorbox{pilotbg}{\parbox{\dimexpr\linewidth-2\fboxsep}{\small
+\textbf{Pilot study.} Three stalls, three healthy checkpoints, two repeats per condition (96 branches in total), one
+worker model, development settings and draft prompts. Every number below is a count from a handful of runs, not an
+estimate with a usable confidence interval. We report it to show the method works end to end and to say which
+questions are worth a full run.}}
+
+\begin{abstract}
+Coding agents often stall: they keep working on a task without getting closer to finishing it. We test, on real
+stalls of DeepSeek V4.1 Flash on Terminal-Bench-style tasks, whether undoing the current approach helps, and whether the
+agent will undo it when given the tools. Every run is checkpointed so that a branch can restore its files, its
+runtime and its context to any earlier step. A stall judge marks where each stall began. Six arms then branch from the
+stall: continue; a one-turn review over a labelled ``Ledger'' of the run or over the plain context, with the power to
+rewind any of the four parts or drop items; the same two views as read-only notes; and a forced rewind of everything
+to the judged onset. In this pilot the forced rewind solved 3 of 6 branches against 2 of 6 for continue, helping on a
+stuck stall (2/2 vs.\ 0/2) and an under-commit stall (1/2 vs.\ 0/2) but not on an over-commit stall (0/2 vs.\ 2/2).
+The agent itself never rewound its context or files in 24 review turns, including 12 in which it was told
+``This run looks stalled.'' An injection test on healthy runs shows the opposite pressure: inserting a real failed
+attempt together with its failure into a run that otherwise solves dropped it to 0/2. The pilot cost \$19.97.
+\end{abstract}
+
+\section{Question}
+\label{sec:question}
+
+A coding agent that stalls keeps spending without getting closer to a solution. Two ways out are to keep going and
+let the agent find its own way, or to undo the approach it is stuck in. Undoing has a cost: work that was useful
+disappears with the work that was not. Prior work gives the agent a rewind tool and lets it decide when to use it
+\cite{zhuang2026agentrewind}, or rewinds the world and keeps a reflection \cite{yu2026rir}, or forks branches with a
+fresh context on a fixed schedule \cite{cai2026forkflush}. Our earlier study found that removing labelled parts of a
+stalled context mostly cost what it removed \cite{srinivasan2026exp48}. Here we ask two narrower questions on stalls
+caught in natural runs:
+\begin{enumerate}[leftmargin=*,itemsep=1pt,topsep=2pt]
+  \item Does undoing back to where the stall began help, compared with continuing?
+  \item Given the power to rewind, does the agent use it?
+\end{enumerate}
+A third question checks the premise from the other side: does a run that is going well get worse when real material
+from a failed attempt is put into it?
+
+\section{Setup}
+\label{sec:setup}
+
+\paragraph{Worker and tasks.} The worker is DeepSeek V4.1 Flash through OpenRouter, run with a mini-SWE-agent-style
+loop \cite{miniswe2026} on Terminal-Bench-style tasks \cite{merrill2026terminalbench} graded by hidden tests. A
+submission that fails is answered only with ``The task is not complete yet. Continue working.'' A branch stops on
+three failed submissions with no improvement, on repeating the same failures, on a cap of 402k new tokens (the 95th
+percentile of the screen's continue branches) or three submissions, or on a \$3 guard.
+
+\paragraph{Checkpoints.} After every step the harness records four parts: the workspace files (W), the runtime outside
+the workspace such as packages, services and files in \texttt{/tmp} (R), the context (H), and the command outputs in the
+context (O). A branch restores any combination of them from any earlier step in a fresh container and continues.
+
+\paragraph{Stalls.} GPT-6.1 Terra judges each run every ten steps (three votes) and marks a stall with its onset step
+and a type: \emph{stuck} (repeating an approach that is not working), \emph{under-commit} (not converging on an answer),
+or \emph{over-commit} (holding to a wrong answer). Each candidate is then screened with five continue branches and five
+forced rewinds to the onset. A stall is admitted if at least one screen branch solves it and continue does not solve
+all five. We picked one admitted stall of each type (Table~\ref{tab:main}).
+
+\paragraph{The Ledger.} Terra labels every step of the run up to the stall: each step's reasoning, commands and
+outputs are split into units, tagged (claim, observation, idea, action) and linked to the units they rest on, with a
+status for each claim. The flat Ledger view shows the run with these labels; the plain context view shows the same
+steps without them.
+
+\paragraph{Arms.} From the stall point:
+\arm{continue};
+\arm{Ledger review} and \arm{context review}, a single turn in which the agent sees the view plus a read-only snapshot
+of its files and processes and makes one \texttt{review\_decision} call that may rewind each of W, R, H and O to any
+earlier step, drop units from its context, keep units from undone steps, or change nothing;
+\arm{Ledger read-only} and \arm{context read-only}, the same views returned as notes with no tool;
+and \arm{forced rewind}, which restores all four parts to the judged onset.
+The review prompt is neutral: ``You can review your work and rewind or drop any part of it, or change nothing.''
+A follow-up repeats the two review arms with one sentence added at the top: ``This run looks stalled.''
+
+\paragraph{Injection and harm tests.} Three healthy checkpoints come from runs that later solved, at points before
+any judged stall. Into each we insert real excerpts from an unsuccessful run of the same task, chosen by a reviewer
+from that run's worker-visible log: neutral filler of about 500 or 6000 tokens, stale command output, a false claim of
+success, a failed approach cut off before its failure shows, the same approach through its failure, or (as files, not
+context) the files that approach left behind. Feedback lines inside injected excerpts are rewritten to the current
+wording. The harm test runs the Ledger review arm on the healthy checkpoints.
+
+\paragraph{Checks before spending.} Every branch specification was first run through the real engine with a scripted
+model: real container restores, real review turns, real splices, one real graded submission, zero model calls.
+
+\section{Results}
+\label{sec:results}
+
+\begin{table}[t]
+\centering
+\small
+\caption{Solved branches out of branches run. The screen (left) used the earlier feedback line
+``Hidden tests still failing: N.''; the arms used the current line.}
+\label{tab:main}
+\resizebox{\linewidth}{!}{\input{tables/main.tex}}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{../figures/fig1_main_arms.pdf}
+\caption{Main arms per stall. Forced rewind to the judged onset (blue) is the only arm that solved the stuck and
+under-commit stalls, and the only one that never solved the over-commit stall.}
+\label{fig:main}
+\end{figure}
+
+\paragraph{Forced rewind helped two stall types and hurt the third.}
+On the stuck production-planning stall every arm that kept the stalled state ended at 90\% of hidden tests passing
+(0/10; one branch never submitted), while both forced rewinds solved on their first submission (Figure~\ref{fig:main}). On the under-commit ATRX
+stall, every kept-state branch ended at exactly 56\% (0/10), the same grade the source run was stuck at; one of two
+forced rewinds solved. On the over-commit heat-pump stall the order flipped: continue solved 2/2 and forced rewind
+0/2. The type judge's label lines up with the sign of the effect in all three cases, which is the hypothesis a full
+run should test.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.86\linewidth]{../figures/fig2_review_decisions.pdf}
+\caption{What the review turn chose. No review rewound the context, the files or the runtime.}
+\label{fig:decisions}
+\end{figure}
+
+\paragraph{The agent does not rewind itself.}
+In the 12 neutral review turns at the three stalls the agent changed nothing 11 times; once it dropped all 20 earlier
+steps from its context while keeping its files, and that branch still ended at 90\%. Told ``This run looks
+stalled.'', it changed nothing 9 of 12 times, dropped old outputs twice, and once rewound only the outputs channel; no
+review rewound H, W or R (Figure~\ref{fig:decisions}). Outcomes in the follow-up matched the neutral reviews
+(Table~\ref{tab:followup}). The reasons it gave were consistent. In none of the reviews was a failed submission in
+view, so from the inside the run looked like progress (``I have not yet done anything wrong that requires rewind'').
+Rewinding was read as losing work (``I'd lose my reasoning/analysis \ldots{} the analysis is my work product''),
+and changing nothing as the safe default (``Change nothing is simplest and safe''). In one ATRX review the agent named
+the real problem, that the supplied coding sequence matches an alternative transcript rather than the one the task
+names, and still changed nothing: a contradiction in the task is not fixed by undoing steps. The review views were
+also very long (0.9--1.2 million characters), which favours keeping everything.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Review arms with the neutral prompt (pilot) and with ``This run looks stalled.'' added (follow-up).}
+\label{tab:followup}
+\resizebox{\linewidth}{!}{\input{tables/followup.tex}}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.66\linewidth]{../figures/fig3_injection_atrx.pdf}
+\caption{Injection test on the one informative healthy checkpoint. Real failed-attempt material lowers solving;
+neutral filler and stale output do not.}
+\label{fig:injection}
+\end{figure}
+
+\paragraph{Failed attempts are contagious.}
+Only one healthy checkpoint was informative. Under the pilot's caps the production checkpoint solved in none of its
+control branches, and the mvcc checkpoint's workspace already passed the hidden tests, so every mvcc branch solved on
+its first submission whatever was inserted (Table~\ref{tab:injection}). On the ATRX checkpoint, which solved 2/2
+untouched, neutral filler and stale output left it at 2/2; a false success claim, the failed approach before its
+failure, and the failed run's leftover report file each cost one of two; and the failed approach shown through its
+failure dropped it to 0/2, both branches settling at the donor's 56\% (Figure~\ref{fig:injection}).
+
+\begin{table}[t]
+\centering
+\small
+\caption{Injection test: solved out of branches per inserted content and healthy checkpoint (-- : no suitable
+excerpt existed).}
+\label{tab:injection}
+\input{tables/injection.tex}
+\end{table}
+
+\paragraph{No harm from reviewing a healthy run.} The Ledger review on healthy checkpoints solved exactly as often as
+the untouched controls (production 0/2 and 0/2, ATRX 2/2 and 2/2, mvcc 2/2 and 2/2); four of six reviews changed
+nothing and two dropped old outputs.
+
+\section{Limitations}
+\label{sec:limits}
+
+\begin{itemize}[leftmargin=*,itemsep=1pt,topsep=2pt]
+  \item \textbf{Size.} Three stalls and two repeats per cell; every comparison above is a few branches.
+  \item \textbf{Feedback wording changed between screen and arms.} The screen used ``Hidden tests still failing:
+  N.''; the arms used the current line. ATRX continue went from 4/5 in the screen to 0/2, and heat-pump continue from
+  2/5 to 2/2, so the wording may matter as much as the arm.
+  \item \textbf{Healthy checkpoints.} Two of three were uninformative (one never solved under the caps, one was already
+  solved), so the injection result rests on one checkpoint.
+  \item \textbf{Review material.} The views were close to a full context in length, and the review came before any
+  failed submission was visible. Both favour changing nothing.
+  \item \textbf{One worker model}, draft prompts, and a stall judge and labeller from one other model family.
+\end{itemize}
+
+\section{Next steps}
+\label{sec:next}
+
+\begin{enumerate}[leftmargin=*,itemsep=1pt,topsep=2pt]
+  \item \textbf{More stalls under one feedback wording.} Six further judge-confirmed stalls and three long unsolved runs
+  are queued; screening and running them under the current line would test whether the stall type predicts the sign of
+  the rewind effect.
+  \item \textbf{An outside rewind decision.} The agent will not rewind itself, and a forced rewind helps on real
+  stalls. The next arm is a controller that decides whether and where to rewind from the Ledger and the workspace, first
+  as rules, then as a contextual bandit trained on branch outcomes.
+  \item \textbf{Ledger branching on live runs.} Detect the stall while the run is going and branch from it then,
+  instead of from stored runs.
+  \item \textbf{Separating failed runs of the same task as a training signal.} Paired branches from one stall that
+  differ only in what was undone give a clean contrast between a failing and a recovering continuation, which can be
+  turned into a reward or preference signal for RL.
+  \item \textbf{A larger agent managing recovery.} A stronger model reads the Ledger and runs the recovery of a
+  smaller worker; its decisions and their outcomes become data for distilling a small Ledger builder and, further
+  off, for updating the worker's weights.
+  \item \textbf{Better review conditions,} to separate the reasons the agent did not rewind: review after a visible
+  failed submission, a short Ledger summary instead of the full run, and the ``stalled'' sentence crossed with both.
+\end{enumerate}
+
+\section*{Reproduction}
+Data, analysis scripts, figures and the engine are in the accompanying repository. Every table and figure is rebuilt
+from \texttt{data/} with \texttt{analysis/make\_tables.py} and \texttt{analysis/make\_figures.py}.
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+
+\end{document}

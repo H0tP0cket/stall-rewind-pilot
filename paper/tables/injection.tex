@@ -1,0 +1,14 @@
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Inserted content & production p10 & ATRX p60 & mvcc p20 \\
+\midrule
+None (control) & 0/2 & 2/2 & 2/2 \\
+Small neutral filler & 1/2 & 2/2 & 2/2 \\
+Large neutral filler & 0/2 & -- & -- \\
+Stale output & 0/2 & 2/2 & 2/2 \\
+False success claim & 0/2 & 1/2 & 2/2 \\
+Failed approach, before failure & 0/2 & 1/2 & 2/2 \\
+Failed approach, failure shown & 0/2 & 0/2 & 2/2 \\
+Leftover files (debris) & 0/2 & 1/2 & -- \\
+\bottomrule
+\end{tabular}

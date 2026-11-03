@@ -1,0 +1,80 @@
+{
+  "version": "v2-worker-settings.1",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "settings": {
+    "temperature": 1,
+    "reasoning": {
+      "effort": "max"
+    },
+    "max_tokens": 262144,
+    "provider": {
+      "allow_fallbacks": false,
+      "only": [
+        "streamlake/fp8"
+      ],
+      "order": [
+        "streamlake/fp8"
+      ],
+      "quantizations": [
+        "fp8"
+      ],
+      "require_parameters": true
+    }
+  },
+  "context_limit": {
+    "rule": "context-limit/v1",
+    "window_tokens": 1024000,
+    "status": "CONFIRMED 2026-10-22: OpenRouter endpoint listing for deepseek/deepseek-v4.1-flash gives streamlake/fp8 context_length 1024000 (max_completion_tokens 384000). Earlier: parasail/fp8 1048576 for deepseek/deepseek-v4.1-flash-1017 (2026-10-17).",
+    "how_to_confirm": "the context_length of the pinned endpoint in the OpenRouter endpoint listing for the pinned model (GET https://openrouter.ai/api/v1/models/<model>/endpoints; not a model call)",
+    "ratified": "user, 2026-10-16: when the next request won't fit, hide the oldest tool outputs, the same way in every arm, and log it; review views are built from the full record",
+    "size_rule": "prompt (o200k_base per-message measure x the provider-to-local ratio of the latest request with a provider count) + the request's response cap (max_tokens, 262,144 here) <= window_tokens; see src/trajectory_retention/execution/context_limit.py"
+  },
+  "provider_decision": {
+    "date": "2026-10-07",
+    "rule": "DigitalOcean if the smoke test passes, including published precision; otherwise StreamLake fp8 (user, 2026-10-05).",
+    "result": "StreamLake fp8. DigitalOcean passed pin match, reasoning passback and caching and was fastest, but publishes no precision (OpenRouter lists it as unknown; its docs name the model 'DeepSeek V4 Flash 0731', which was not confirmed to be V4.1 Flash).",
+    "evidence": [
+      "artifacts/v2/provider-smoke/digitalocean-20261007T184010Z.json",
+      "artifacts/v2/provider-smoke/streamlake-fp8-20261007T184034Z.json",
+      "artifacts/v2/provider-smoke/gmicloud-fp8-20261007T184041Z.json",
+      "artifacts/v2/provider-smoke/effort-*-20261007T1857*.json"
+    ],
+    "commands": [
+      "python configs/v2/provider_smoke.py --provider <name>",
+      "python configs/v2/provider_effort_probe.py --provider <name>"
+    ]
+  },
+  "model_decision": {
+    "date": "2026-10-22",
+    "rule": "user, 2026-10-22: \"let's just use Dsv4.1 instead of 1017 more stalls right it's a little worse\" (original DeepSeek V4.1 Flash); provider back to StreamLake fp8 per provider_decision (2026-10-07)",
+    "why": "on the 1017 stage-1 screen (artifacts/v2/screen/tbv4-1017-20261021) mvcc 3/3, atrx 2/2 and production-planning 2/2 solved, nearly all on the first submission, so too few stalls",
+    "superseded": {
+      "date": "2026-10-21",
+      "rule": "user, 2026-10-21: \"lets use 1017 for at least our 6 sealed task runs\" (DeepSeek V4.1 Flash 1017 snapshot, released 2026-10-17); provider Parasail fp8 (Q30 pick, agreed)",
+      "why_parasail": "StreamLake does not serve 1017; Morph has no tool use for 1017 (HTTP 404 'No endpoints found that support tool use'); DeepInfra caps responses at 131072 (< max_tokens 262144); DeepSeek first party is excluded by the account's training data policy; Cloudflare was rate-limited and publishes no precision. Parasail fp8 passed pin match and past-reasoning passback in the smoke test; on an 8,688-token prompt its repeats read 8,576 tokens from cache.",
+      "evidence": [
+        "artifacts/v2/provider-smoke/parasail-fp8-20261017T192539Z.json"
+      ]
+    }
+  },
+  "unresolved_retry": {
+    "rule": "worst-case-charged-retry.v1",
+    "ratified": "user, 2026-10-23 (Q55 b): retry an attempt whose generation is unresolved (HTTP 529/520/504, timeouts) instead of stopping the run; charge each such attempt its worst case against the $3 guard",
+    "why": "the tbv4-v41-20261023 stage-1 screen lost 11 of 24 runs to single unresolved attempts (0.5% of 2,145 calls) under the Q8 stop",
+    "retries": "within worker_request_policy max_attempts (5 attempts per call, so up to 4 retries), exponential backoff from 4 s; a call still unresolved on its last attempt stops the run as before",
+    "worst_case_usd_per_million_tokens": {
+      "prompt": 0.3,
+      "completion": 1.2
+    },
+    "price_source": "2026-10-23 OpenRouter endpoint listing for streamlake/fp8: prompt $0.147/M and completion $0.588/M after a 0.51 discount, so $0.30/M and $1.20/M before it; above the price card (0.141/0.564) and every observed price",
+    "bound": "worst case of one attempt = serialized request bytes x prompt price + the attempt's response cap x completion price; used by the guards only, the attempt's usage stays unknown in the ledger"
+  },
+  "submission_stop": {
+    "rule": "submission-no-improvement/v1",
+    "limit": 3,
+    "baseline": "first_submission"
+  },
+  "submission_feedback": {
+    "rule": "neutral-submission-feedback/v2"
+  }
+}

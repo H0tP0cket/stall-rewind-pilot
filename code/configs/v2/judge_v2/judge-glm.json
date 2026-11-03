@@ -1,0 +1,19 @@
+{
+  "version": "v2-judge-settings.2-glm",
+  "role": "study judge for v2 natural runs (stall judge v2)",
+  "model": "z-ai/glm-5.3-flash",
+  "provider": {"only": ["gmicloud/fp8"], "order": ["gmicloud/fp8"], "allow_fallbacks": false, "quantizations": ["fp8"]},
+  "provider_name": "GMICloud",
+  "reasoning": {"effort": "max"},
+  "max_tokens": 131072,
+  "attempts": 3,
+  "guard_price_per_token": {"in": 0.09e-6, "out": 0.30e-6,
+    "note": "list price used only to reserve spend before a call; receipts carry the real cost"},
+  "decision": {
+    "date": "2026-10-21",
+    "rule": "user Q12: the judge is GLM-5.3 Flash, run every 10 worker steps, prefix-bound; this replaces Claude Haiku 5.5 (configs/v2/judge.json, kept unchanged for the earlier postrun)",
+    "binding": "the GLM binding of the 2026-09-26 validation (configs/detector-judge-20260926/judge.py: GMICloud fp8, no fallbacks, max reasoning, 131072 output tokens), carried over unchanged",
+    "errors": "user Q8: a call that errors is retried (attempts = 3 in all), then recorded as no_answer, which is not a stall vote",
+    "votes": "3 votes, majority stall; unclear, unparseable, refused and no_answer votes are not stall votes"
+  }
+}

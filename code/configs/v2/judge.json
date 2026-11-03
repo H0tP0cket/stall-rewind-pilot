@@ -1,0 +1,16 @@
+{
+  "version": "v2-judge-settings.1",
+  "model": "anthropic/claude-haiku-5.5",
+  "provider": {"only": ["anthropic"], "order": ["anthropic"], "allow_fallbacks": false, "require_parameters": true},
+  "provider_name": "Anthropic",
+  "reasoning": {"effort": "max"},
+  "max_tokens": 128000,
+  "guard_price_per_token": {"in": 0.5e-6, "out": 2.5e-6,
+    "note": "the prompts-over-100k tier, used only to reserve spend before a call; receipts carry the real cost"},
+  "decision": {
+    "date": "2026-10-07",
+    "rule": "user: use Haiku 5.5 as judge instead (better on the Pareto frontier probably); replaces GLM-5.3 Flash on GMICloud fp8 for v2 natural runs",
+    "unchanged": "frozen v1 judge prompts, prefix-only record, 3 votes, majority stall; unclear, unparseable and refused votes are not stall votes",
+    "pricing_2026-10-07": "Anthropic first party via OpenRouter: $0.10/M in, $0.50/M out up to 100k prompt tokens; $0.50/M in, $2.50/M out above; 1M context, 128k output"
+  }
+}

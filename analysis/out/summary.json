@@ -1,0 +1,227 @@
+{
+ "main": {
+  "production-planning": {
+   "1_continue": [
+    0,
+    2
+   ],
+   "2_ledger_review": [
+    0,
+    2
+   ],
+   "3_context_review": [
+    0,
+    2
+   ],
+   "4_forced_rewind_to_p": [
+    2,
+    2
+   ],
+   "5_ledger_read_only": [
+    0,
+    2
+   ],
+   "6_context_read_only": [
+    0,
+    2
+   ]
+  },
+  "atrx-vep-crispr": {
+   "1_continue": [
+    0,
+    2
+   ],
+   "2_ledger_review": [
+    0,
+    2
+   ],
+   "3_context_review": [
+    0,
+    2
+   ],
+   "4_forced_rewind_to_p": [
+    1,
+    2
+   ],
+   "5_ledger_read_only": [
+    0,
+    2
+   ],
+   "6_context_read_only": [
+    0,
+    2
+   ]
+  },
+  "heat-pump-warranty": {
+   "1_continue": [
+    2,
+    2
+   ],
+   "2_ledger_review": [
+    2,
+    2
+   ],
+   "3_context_review": [
+    1,
+    2
+   ],
+   "4_forced_rewind_to_p": [
+    0,
+    2
+   ],
+   "5_ledger_read_only": [
+    1,
+    2
+   ],
+   "6_context_read_only": [
+    2,
+    2
+   ]
+  }
+ },
+ "decisions": {
+  "Stalls, neutral prompt": {
+   "n": 12,
+   "change_nothing": 11,
+   "drop_only": 1,
+   "rewound_any": 0,
+   "rewound_context_or_files": 0
+  },
+  "Stalls, told stalled": {
+   "n": 12,
+   "change_nothing": 9,
+   "drop_only": 2,
+   "rewound_any": 1,
+   "rewound_context_or_files": 0
+  },
+  "Healthy runs (harm test)": {
+   "n": 6,
+   "change_nothing": 4,
+   "drop_only": 2,
+   "rewound_any": 0,
+   "rewound_context_or_files": 0
+  }
+ },
+ "injection": {
+  "inj_continue": {
+   "production p10": [
+    0,
+    2
+   ],
+   "ATRX p60": [
+    2,
+    2
+   ],
+   "mvcc p20": [
+    2,
+    2
+   ]
+  },
+  "inj_small_neutral": {
+   "production p10": [
+    1,
+    2
+   ],
+   "ATRX p60": [
+    2,
+    2
+   ],
+   "mvcc p20": [
+    2,
+    2
+   ]
+  },
+  "inj_large_neutral": {
+   "production p10": [
+    0,
+    2
+   ],
+   "ATRX p60": [
+    0,
+    0
+   ],
+   "mvcc p20": [
+    0,
+    0
+   ]
+  },
+  "inj_stale_output": {
+   "production p10": [
+    0,
+    2
+   ],
+   "ATRX p60": [
+    2,
+    2
+   ],
+   "mvcc p20": [
+    2,
+    2
+   ]
+  },
+  "inj_false_success_claim": {
+   "production p10": [
+    0,
+    2
+   ],
+   "ATRX p60": [
+    1,
+    2
+   ],
+   "mvcc p20": [
+    2,
+    2
+   ]
+  },
+  "inj_failed_approach_promising": {
+   "production p10": [
+    0,
+    2
+   ],
+   "ATRX p60": [
+    1,
+    2
+   ],
+   "mvcc p20": [
+    2,
+    2
+   ]
+  },
+  "inj_failed_attempt_failure_shown": {
+   "production p10": [
+    0,
+    2
+   ],
+   "ATRX p60": [
+    0,
+    2
+   ],
+   "mvcc p20": [
+    2,
+    2
+   ]
+  },
+  "inj_workspace_debris": {
+   "production p10": [
+    0,
+    2
+   ],
+   "ATRX p60": [
+    1,
+    2
+   ],
+   "mvcc p20": [
+    0,
+    0
+   ]
+  }
+ },
+ "cost_usd": {
+  "pilot_main": 7.68,
+  "pilot_injection": 8.26,
+  "pilot_harm": 1.32,
+  "followup_stalled_told": 2.7,
+  "total": 19.97,
+  "branches": 96
+ }
+}

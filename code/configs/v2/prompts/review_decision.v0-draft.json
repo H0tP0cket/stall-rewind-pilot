@@ -1,0 +1,53 @@
+{
+ "status": "DRAFT v0-draft (track S, 2026-10-07): the review_decision tool for arms 2 and 3, in OpenAI function format; one schema per rewind mode. Argument shapes follow brief-interfaces.md exactly.",
+ "per_channel": {
+  "type": "function",
+  "function": {
+   "name": "review_decision",
+   "description": "Your one decision for this review: rewind parts of your state, drop units from your context, keep units from undone steps, or change nothing.",
+   "parameters": {
+    "type": "object",
+    "properties": {
+     "rewind": {
+      "description": "null to rewind nothing; otherwise the point (0 = start of the task, k = right after step k) for each part, or null to leave that part as it is.",
+      "anyOf": [
+       {"type": "null"},
+       {"type": "object",
+        "properties": {
+         "workspace": {"type": ["integer", "null"], "minimum": 0},
+         "context": {"type": ["integer", "null"], "minimum": 0},
+         "runtime": {"type": ["integer", "null"], "minimum": 0},
+         "outputs": {"type": ["integer", "null"], "minimum": 0}
+        },
+        "required": ["workspace", "context", "runtime", "outputs"],
+        "additionalProperties": false}
+      ]
+     },
+     "drop": {"type": "array", "items": {"type": "string"}, "description": "IDs of units to remove from your context (context only, never files)."},
+     "keep": {"type": "array", "items": {"type": "string"}, "description": "IDs of units from steps the context rewind undoes, to be handed back after the rewind."},
+     "change_nothing": {"type": "boolean", "description": "true to keep everything as it is (then rewind is null and drop and keep are empty)."}
+    },
+    "required": ["rewind", "drop", "keep", "change_nothing"],
+    "additionalProperties": false
+   }
+  }
+ },
+ "coupled": {
+  "type": "function",
+  "function": {
+   "name": "review_decision",
+   "description": "Your one decision for this review: rewind everything to one point, drop units from your context, keep units from undone steps, or change nothing.",
+   "parameters": {
+    "type": "object",
+    "properties": {
+     "rewind_to": {"type": ["integer", "null"], "minimum": 0, "description": "null to rewind nothing; otherwise the point (0 = start of the task, k = right after step k) that the workspace, runtime, context and outputs all return to."},
+     "drop": {"type": "array", "items": {"type": "string"}, "description": "IDs of units to remove from your context (context only, never files)."},
+     "keep": {"type": "array", "items": {"type": "string"}, "description": "IDs of units from steps the rewind undoes, to be handed back after the rewind."},
+     "change_nothing": {"type": "boolean", "description": "true to keep everything as it is (then rewind_to is null and drop and keep are empty)."}
+    },
+    "required": ["rewind_to", "drop", "keep", "change_nothing"],
+    "additionalProperties": false
+   }
+  }
+ }
+}

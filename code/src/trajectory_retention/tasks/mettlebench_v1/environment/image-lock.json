@@ -1,0 +1,35 @@
+{
+  "images": {
+    "default": {
+      "image_id": "sha256:9db60f8fc39d3c354797e343150c973932155d86cf34bb4da475021d81ac4383",
+      "tag": "tr-mettlebench-env:v4",
+      "build_args": {
+        "WITH_TORCH": "0"
+      }
+    },
+    "torch": {
+      "image_id": "sha256:fac73bd214bf7ab982c0f3ea69c3a609cf7fcb3c91ece09f3e0cd93c2dc75690",
+      "tag": "tr-mettlebench-env:v4-torch",
+      "build_args": {
+        "WITH_TORCH": "1"
+      }
+    }
+  },
+  "task_variants": {
+    "terminal_pytorch_checkpoint_handoff": "torch"
+  },
+  "architecture": "arm64",
+  "base": "python:3.12-slim-trixie",
+  "dockerfile_sha256": "de800e221fcaa8be78ad7ba744afdf11bdab531c50eddc8fe0553da219cd6383",
+  "python_lock_base_sha256": "902c56b4b6706e47575da9ba70b9b1d108cb686996aa16aae00d578f08edf998",
+  "python_lock_torch_sha256": "26695c49dec443f4ca3d417e2d098dda140a93dfe4429fe256748e30503aa16f",
+  "requirements_sha256": "60f1522cd385aa9ee06ca281944a751c356e6d19bb8fbfb26e3ba15d41e75331",
+  "built": "2026-09-24",
+  "history": [
+    "v1 sha256:638ca227c234... first build",
+    "v2 sha256:71498ec77c96... exact lock + rsync/bc/jq/zstd/lz4/xxd/hexdump",
+    "v3 sha256:814ee3245a25... default -ffp-contract=off (x86-64 FP parity)",
+    "v4: v3 without the torch stack in the default image (51k -> fewer files; docker diff per R capture was ~28 s under load); torch only in the v4-torch variant"
+  ],
+  "note": "Content-addressed local images; the image ID is the binding."
+}

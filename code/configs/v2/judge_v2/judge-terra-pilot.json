@@ -1,0 +1,20 @@
+{
+  "version": "v2-judge-settings.3-terra-pilot",
+  "role": "development pilot judge; user approved 2026-10-27; not human validated",
+  "model": "gpt-6.1-terra",
+  "transport": "codex-subscription",
+  "provider": {"only": ["codex-subscription"], "allow_fallbacks": false},
+  "provider_name": "Codex subscription",
+  "reasoning": {"effort": "max"},
+  "max_tokens": 128000,
+  "attempts": 3,
+  "guard_price_per_token": {"in": 0.0, "out": 0.0,
+    "note": "No external API charge. Codex allowance is consumed; token usage is recorded and dollar equivalent is unknown."},
+  "decision": {
+    "date": "2026-10-27",
+    "rule": "Terra subscription agents for pilot judging and labelling; original DSV4.1 Flash for mines, recovery reviews, screens and all branch execution.",
+    "binding": "Fresh Codex sessions, no inherited chat, general tools disabled; oversized inputs use only a read-only immutable record attachment, verified in full. Exact permitted input and event logs retained. Maximum reasoning retained. CLI uses its model output limit, not an API max_tokens override.",
+    "votes": "Three fresh votes per ten-step point. Do not mix GLM and Terra votes.",
+    "development_only": true
+  }
+}

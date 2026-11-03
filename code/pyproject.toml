@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "trajectory-retention"
+version = "0.1.0"
+description = "Auditable coding-agent trajectory retention experiments"
+requires-python = ">=3.12"
+dependencies = ["mini-swe-agent==2.4.6"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+trajectory-retention = "trajectory_retention.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/trajectory_retention"]
+
+[tool.hatch.build.targets.sdist]
+include = ["/src/trajectory_retention", "/tests", "/README.md", "/pyproject.toml", "/uv.lock",
+           "/benchmark_tasks/packages", "/benchmark_tasks/admission"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

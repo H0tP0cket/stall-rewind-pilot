@@ -1,0 +1,17 @@
+{
+  "version": "v2-judge-settings.2-luna-DRAFT",
+  "role": "validation comparison only (the second, non-Claude judge model of the replay); never the study judge. DRAFT: the user picks the second model",
+  "model": "openai/gpt-6-luna",
+  "provider": {"only": ["openai"], "order": ["openai"], "allow_fallbacks": false},
+  "provider_name": "OpenAI",
+  "reasoning": {"effort": "max"},
+  "max_tokens": 128000,
+  "attempts": 3,
+  "guard_price_per_token": {"in": 0.125e-6, "out": 0.50e-6,
+    "note": "fitted exactly from 415 GPT-6 Luna worker calls in artifacts/calibration/validation-v7-20260924-v1-climb1-mettlebench (uncached input $0.125/M, cached $0.01/M, output $0.50/M; all served by OpenAI); used only to reserve spend"},
+  "decision": {
+    "date": "2026-10-21",
+    "rule": "coordinator brief: the replay must support GLM-5.3 Flash plus one other non-Claude model; GPT-6 Luna is the only other non-Claude model with a pinned binding in this repo (the worker binding of the validation runs: OpenAI only, no fallbacks, max reasoning, 128000 output tokens)",
+    "caveat": "36 of the 71 validation runs were worked by GPT-6 Luna itself, so on those runs it judges its own model's record (the record masks the model name)"
+  }
+}
