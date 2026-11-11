@@ -79,6 +79,82 @@
    ]
   }
  },
+ "followup_2026_11_04": {
+  "production-planning": {
+   "7_ledger_review_anytime": [
+    1,
+    2
+   ],
+   "2_ledger_review_opus_decides": [
+    1,
+    2
+   ]
+  },
+  "atrx-vep-crispr": {
+   "7_ledger_review_anytime": [
+    0,
+    2
+   ],
+   "2_ledger_review_opus_decides": [
+    0,
+    2
+   ]
+  },
+  "heat-pump-warranty": {
+   "7_ledger_review_anytime": [
+    2,
+    2
+   ],
+   "2_ledger_review_opus_decides": [
+    1,
+    2
+   ]
+  }
+ },
+ "pooled_continue_vs_rewind": {
+  "production-planning": {
+   "stall_point": 20,
+   "rewind_restores": 17,
+   "screen_feedback": "count line",
+   "continue": [
+    0,
+    7
+   ],
+   "forced_rewind": [
+    5,
+    7
+   ],
+   "fisher_p": 0.021
+  },
+  "atrx-vep-crispr": {
+   "stall_point": 100,
+   "rewind_restores": 91,
+   "screen_feedback": "count line",
+   "continue": [
+    4,
+    7
+   ],
+   "forced_rewind": [
+    3,
+    7
+   ],
+   "fisher_p": 1.0
+  },
+  "heat-pump-warranty": {
+   "stall_point": 70,
+   "rewind_restores": 68,
+   "screen_feedback": "neutral line",
+   "continue": [
+    4,
+    7
+   ],
+   "forced_rewind": [
+    2,
+    7
+   ],
+   "fisher_p": 0.5921
+  }
+ },
  "decisions": {
   "Stalls, neutral prompt": {
    "n": 12,
@@ -102,6 +178,153 @@
    "rewound_context_or_files": 0
   }
  },
+ "anytime_openings": {
+  "production-planning": {
+   "openings": 3,
+   "changed nothing": 0,
+   "trimmed context only": 1,
+   "rewound outputs only": 0,
+   "rewound context, files or runtime": 2
+  },
+  "atrx-vep-crispr": {
+   "openings": 6,
+   "changed nothing": 6,
+   "trimmed context only": 0,
+   "rewound outputs only": 0,
+   "rewound context, files or runtime": 0
+  },
+  "heat-pump-warranty": {
+   "openings": 4,
+   "changed nothing": 4,
+   "trimmed context only": 0,
+   "rewound outputs only": 0,
+   "rewound context, files or runtime": 0
+  },
+  "all": {
+   "openings": 13,
+   "changed nothing": 10,
+   "trimmed context only": 1,
+   "rewound outputs only": 0,
+   "rewound context, files or runtime": 2
+  }
+ },
+ "who_rewinds": {
+  "All requests": {
+   "worker": {
+    "answers": 43,
+    "call_errors": 0,
+    "changed nothing": 34,
+    "trimmed context only": 6,
+    "rewound outputs only": 1,
+    "rewound context, files or runtime": 2,
+    "no usable answer": 0
+   },
+   "deepseek_resample": {
+    "answers": 84,
+    "call_errors": 17,
+    "changed nothing": 57,
+    "trimmed context only": 11,
+    "rewound outputs only": 0,
+    "rewound context, files or runtime": 12,
+    "no usable answer": 4
+   },
+   "deepseek_outside_observer": {
+    "answers": 84,
+    "call_errors": 8,
+    "changed nothing": 65,
+    "trimmed context only": 4,
+    "rewound outputs only": 0,
+    "rewound context, files or runtime": 13,
+    "no usable answer": 2
+   },
+   "opus": {
+    "answers": 28,
+    "call_errors": 8,
+    "changed nothing": 0,
+    "trimmed context only": 10,
+    "rewound outputs only": 0,
+    "rewound context, files or runtime": 18,
+    "no usable answer": 0
+   }
+  },
+  "Requests at stalls": {
+   "worker": {
+    "answers": 37,
+    "call_errors": 0,
+    "changed nothing": 30,
+    "trimmed context only": 4,
+    "rewound outputs only": 1,
+    "rewound context, files or runtime": 2,
+    "no usable answer": 0
+   },
+   "deepseek_resample": {
+    "answers": 75,
+    "call_errors": 16,
+    "changed nothing": 54,
+    "trimmed context only": 7,
+    "rewound outputs only": 0,
+    "rewound context, files or runtime": 10,
+    "no usable answer": 4
+   },
+   "deepseek_outside_observer": {
+    "answers": 75,
+    "call_errors": 7,
+    "changed nothing": 60,
+    "trimmed context only": 1,
+    "rewound outputs only": 0,
+    "rewound context, files or runtime": 12,
+    "no usable answer": 2
+   },
+   "opus": {
+    "answers": 25,
+    "call_errors": 7,
+    "changed nothing": 0,
+    "trimmed context only": 7,
+    "rewound outputs only": 0,
+    "rewound context, files or runtime": 18,
+    "no usable answer": 0
+   }
+  },
+  "Requests at healthy checkpoints": {
+   "worker": {
+    "answers": 6,
+    "call_errors": 0,
+    "changed nothing": 4,
+    "trimmed context only": 2,
+    "rewound outputs only": 0,
+    "rewound context, files or runtime": 0,
+    "no usable answer": 0
+   },
+   "deepseek_resample": {
+    "answers": 9,
+    "call_errors": 1,
+    "changed nothing": 3,
+    "trimmed context only": 4,
+    "rewound outputs only": 0,
+    "rewound context, files or runtime": 2,
+    "no usable answer": 0
+   },
+   "deepseek_outside_observer": {
+    "answers": 9,
+    "call_errors": 1,
+    "changed nothing": 5,
+    "trimmed context only": 3,
+    "rewound outputs only": 0,
+    "rewound context, files or runtime": 1,
+    "no usable answer": 0
+   },
+   "opus": {
+    "answers": 3,
+    "call_errors": 1,
+    "changed nothing": 0,
+    "trimmed context only": 3,
+    "rewound outputs only": 0,
+    "rewound context, files or runtime": 0,
+    "no usable answer": 0
+   }
+  }
+ },
+ "observer_cost_usd": 3.93,
  "injection": {
   "inj_continue": {
    "production p10": [
@@ -216,12 +439,33 @@
    ]
   }
  },
+ "injection_failure_shown_vs_control_atrx": {
+  "failure_shown": [
+   0,
+   2
+  ],
+  "control": [
+   2,
+   2
+  ],
+  "fisher_p": 0.3333
+ },
  "cost_usd": {
   "pilot_main": 7.68,
   "pilot_injection": 8.26,
   "pilot_harm": 1.32,
   "followup_stalled_told": 2.7,
-  "total": 19.97,
-  "branches": 96
+  "followup_anytime_review": 2.32,
+  "followup_opus_decides": 1.32,
+  "total": 23.61,
+  "branches": 108
+ },
+ "branches_per_set": {
+  "pilot_main": 36,
+  "pilot_injection": 42,
+  "pilot_harm": 6,
+  "followup_stalled_told": 12,
+  "followup_anytime_review": 6,
+  "followup_opus_decides": 6
  }
 }

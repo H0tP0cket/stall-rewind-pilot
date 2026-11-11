@@ -1,0 +1,240 @@
+request_id,task,unit_kind,arm,chooser,sample,worker_turn,decision,usable_answer,changed_nothing,rewound_context,rewound_files,rewound_runtime,rewound_outputs_only,n_drops,n_keeps,valid,input_variant,cost_usd
+atrx__2__5b68714f,atrx-vep-crispr,stall,2_ledger_review,worker,0,main__atrx__2_ledger_review__r0,nothing,True,True,False,False,False,False,0,0,True,,
+atrx__2__5b68714f,atrx-vep-crispr,stall,2_ledger_review,worker,1,main__atrx__2_ledger_review__r1,nothing,True,True,False,False,False,False,0,0,True,,
+atrx__2__5b68714f,atrx-vep-crispr,stall,2_ledger_review,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.05654
+atrx__2__5b68714f,atrx-vep-crispr,stall,2_ledger_review,deepseek_resample,1,,nothing,True,True,False,False,False,False,0,0,True,,0.05471
+atrx__2__5b68714f,atrx-vep-crispr,stall,2_ledger_review,deepseek_resample,2,,nothing,True,True,False,False,False,False,0,0,True,,0.05589
+atrx__2__5b68714f,atrx-vep-crispr,stall,2_ledger_review,deepseek_outside_observer,0,,nothing,True,True,False,False,False,False,0,0,True,,0.06504
+atrx__2__5b68714f,atrx-vep-crispr,stall,2_ledger_review,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.06907
+atrx__2__5b68714f,atrx-vep-crispr,stall,2_ledger_review,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.05895
+atrx__2__5b68714f,atrx-vep-crispr,stall,2_ledger_review,opus,0,,C91 drop2 keep2,True,False,True,False,False,False,2,2,True,original,
+atrx__3__7cbe54a3,atrx-vep-crispr,stall,3_context_review,worker,0,main__atrx__3_context_review__r0,nothing,True,True,False,False,False,False,0,0,True,,
+atrx__3__7cbe54a3,atrx-vep-crispr,stall,3_context_review,worker,1,main__atrx__3_context_review__r1,nothing,True,True,False,False,False,False,0,0,True,,
+atrx__3__7cbe54a3,atrx-vep-crispr,stall,3_context_review,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.04012
+atrx__3__7cbe54a3,atrx-vep-crispr,stall,3_context_review,deepseek_resample,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00131
+atrx__3__7cbe54a3,atrx-vep-crispr,stall,3_context_review,deepseek_resample,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00196
+atrx__3__7cbe54a3,atrx-vep-crispr,stall,3_context_review,deepseek_outside_observer,0,,nothing,True,True,False,False,False,False,0,0,False,,0.00146
+atrx__3__7cbe54a3,atrx-vep-crispr,stall,3_context_review,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.0074
+atrx__3__7cbe54a3,atrx-vep-crispr,stall,3_context_review,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00203
+atrx__3__7cbe54a3,atrx-vep-crispr,stall,3_context_review,opus,0,,drop64,True,False,False,False,False,False,64,0,True,notes,
+heatpump__2__252cca0a,heat-pump-warranty,stall,2_ledger_review,worker,0,main__heatpump__2_ledger_review__r0,nothing,True,True,False,False,False,False,0,0,True,,
+heatpump__2__252cca0a,heat-pump-warranty,stall,2_ledger_review,worker,1,main__heatpump__2_ledger_review__r1,nothing,True,True,False,False,False,False,0,0,True,,
+heatpump__2__252cca0a,heat-pump-warranty,stall,2_ledger_review,deepseek_resample,0,,empty,False,,,,,,,,False,,0.04165
+heatpump__2__252cca0a,heat-pump-warranty,stall,2_ledger_review,deepseek_resample,1,,nothing,True,True,False,False,False,False,0,0,True,,0.05023
+heatpump__2__252cca0a,heat-pump-warranty,stall,2_ledger_review,deepseek_resample,2,,nothing,True,True,False,False,False,False,0,0,True,,0.0059
+heatpump__2__252cca0a,heat-pump-warranty,stall,2_ledger_review,deepseek_outside_observer,0,,nothing,True,True,False,False,False,False,0,0,False,,0.00575
+heatpump__2__252cca0a,heat-pump-warranty,stall,2_ledger_review,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00248
+heatpump__2__252cca0a,heat-pump-warranty,stall,2_ledger_review,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.0154
+heatpump__2__252cca0a,heat-pump-warranty,stall,2_ledger_review,opus,0,,drop15,True,False,False,False,False,False,15,0,True,notes,
+heatpump__3__1536521f,heat-pump-warranty,stall,3_context_review,worker,0,main__heatpump__3_context_review__r0,nothing,True,True,False,False,False,False,0,0,True,,
+heatpump__3__1536521f,heat-pump-warranty,stall,3_context_review,worker,1,main__heatpump__3_context_review__r1,nothing,True,True,False,False,False,False,0,0,True,,
+heatpump__3__1536521f,heat-pump-warranty,stall,3_context_review,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.03764
+heatpump__3__1536521f,heat-pump-warranty,stall,3_context_review,deepseek_resample,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00124
+heatpump__3__1536521f,heat-pump-warranty,stall,3_context_review,deepseek_resample,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00121
+heatpump__3__1536521f,heat-pump-warranty,stall,3_context_review,deepseek_outside_observer,0,,nothing,True,True,False,False,False,False,0,0,True,,0.03606
+heatpump__3__1536521f,heat-pump-warranty,stall,3_context_review,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00325
+heatpump__3__1536521f,heat-pump-warranty,stall,3_context_review,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00121
+heatpump__3__1536521f,heat-pump-warranty,stall,3_context_review,opus,0,,drop18,True,False,False,False,False,False,18,0,True,original,
+production__2__f743d92f,production-planning,stall,2_ledger_review,worker,0,main__production__2_ledger_review__r0,nothing,True,True,False,False,False,False,0,0,True,,
+production__2__f743d92f,production-planning,stall,2_ledger_review,worker,1,main__production__2_ledger_review__r1,drop20,True,False,False,False,False,False,20,0,True,,
+production__2__f743d92f,production-planning,stall,2_ledger_review,deepseek_resample,0,,drop6,True,False,False,False,False,False,6,0,True,,0.04011
+production__2__f743d92f,production-planning,stall,2_ledger_review,deepseek_resample,1,,drop4,True,False,False,False,False,False,4,0,False,,0.0341
+production__2__f743d92f,production-planning,stall,2_ledger_review,deepseek_resample,2,,C7 O7 drop6 keep6,True,False,True,False,False,False,6,6,False,,0.00599
+production__2__f743d92f,production-planning,stall,2_ledger_review,deepseek_outside_observer,0,,nothing,True,True,False,False,False,False,0,0,True,,0.03393
+production__2__f743d92f,production-planning,stall,2_ledger_review,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.0029
+production__2__f743d92f,production-planning,stall,2_ledger_review,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00684
+production__2__f743d92f,production-planning,stall,2_ledger_review,opus,0,,C17 drop1 keep104,True,False,True,False,False,False,1,104,True,original,
+production__3__dca5ec88,production-planning,stall,3_context_review,worker,0,main__production__3_context_review__r0,nothing,True,True,False,False,False,False,0,0,True,,
+production__3__dca5ec88,production-planning,stall,3_context_review,worker,1,main__production__3_context_review__r1,nothing,True,True,False,False,False,False,0,0,True,,
+production__3__dca5ec88,production-planning,stall,3_context_review,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.02526
+production__3__dca5ec88,production-planning,stall,3_context_review,deepseek_resample,1,,drop9,True,False,False,False,False,False,9,0,True,,0.0258
+production__3__dca5ec88,production-planning,stall,3_context_review,deepseek_resample,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00131
+production__3__dca5ec88,production-planning,stall,3_context_review,deepseek_outside_observer,0,,nothing,True,True,False,False,False,False,0,0,True,,0.02548
+production__3__dca5ec88,production-planning,stall,3_context_review,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00285
+production__3__dca5ec88,production-planning,stall,3_context_review,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00171
+production__3__dca5ec88,production-planning,stall,3_context_review,opus,0,,C16 drop2 keep4,True,False,True,False,False,False,2,4,True,original,
+atrx__2__f8a4489c,atrx-vep-crispr,stall,2_ledger_review,worker,0,main-stalled-a__atrx__2_ledger_review__r0,nothing,True,True,False,False,False,False,0,0,True,,
+atrx__2__f8a4489c,atrx-vep-crispr,stall,2_ledger_review,worker,1,main-stalled-b__atrx__2_ledger_review__r0,nothing,True,True,False,False,False,False,0,0,True,,
+atrx__2__f8a4489c,atrx-vep-crispr,stall,2_ledger_review,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.05655
+atrx__2__f8a4489c,atrx-vep-crispr,stall,2_ledger_review,deepseek_resample,1,,nothing,True,True,False,False,False,False,0,0,True,,0.017
+atrx__2__f8a4489c,atrx-vep-crispr,stall,2_ledger_review,deepseek_resample,2,,drop6,True,False,False,False,False,False,6,0,False,,0.0023
+atrx__2__f8a4489c,atrx-vep-crispr,stall,2_ledger_review,deepseek_outside_observer,0,,C91 O91,True,False,True,False,False,False,0,0,True,,0.08663
+atrx__2__f8a4489c,atrx-vep-crispr,stall,2_ledger_review,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.02615
+atrx__2__f8a4489c,atrx-vep-crispr,stall,2_ledger_review,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.03763
+atrx__2__f8a4489c,atrx-vep-crispr,stall,2_ledger_review,opus,0,,C91 drop17 keep7,True,False,True,False,False,False,17,7,False,original,
+atrx__3__959fb01e,atrx-vep-crispr,stall,3_context_review,worker,0,main-stalled-a__atrx__3_context_review__r0,drop89,True,False,False,False,False,False,89,0,True,,
+atrx__3__959fb01e,atrx-vep-crispr,stall,3_context_review,worker,1,main-stalled-b__atrx__3_context_review__r0,nothing,True,True,False,False,False,False,0,0,True,,
+atrx__3__959fb01e,atrx-vep-crispr,stall,3_context_review,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.00178
+atrx__3__959fb01e,atrx-vep-crispr,stall,3_context_review,deepseek_resample,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00146
+atrx__3__959fb01e,atrx-vep-crispr,stall,3_context_review,deepseek_resample,2,,nothing,True,True,False,False,False,False,0,0,True,,0.03993
+atrx__3__959fb01e,atrx-vep-crispr,stall,3_context_review,deepseek_outside_observer,0,,W92 C92 O92,True,False,True,True,False,False,0,0,True,,0.04637
+atrx__3__959fb01e,atrx-vep-crispr,stall,3_context_review,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00269
+atrx__3__959fb01e,atrx-vep-crispr,stall,3_context_review,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00278
+atrx__3__959fb01e,atrx-vep-crispr,stall,3_context_review,opus,0,,C91 drop20,True,False,True,False,False,False,20,0,True,original,
+heatpump__2__324a4954,heat-pump-warranty,stall,2_ledger_review,worker,0,main-stalled-a__heatpump__2_ledger_review__r0,drop52,True,False,False,False,False,False,52,0,True,,
+heatpump__2__324a4954,heat-pump-warranty,stall,2_ledger_review,worker,1,main-stalled-b__heatpump__2_ledger_review__r0,nothing,True,True,False,False,False,False,0,0,True,,
+heatpump__2__324a4954,heat-pump-warranty,stall,2_ledger_review,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.06628
+heatpump__2__324a4954,heat-pump-warranty,stall,2_ledger_review,deepseek_resample,1,,R50,True,False,False,False,True,False,0,0,True,,0.05235
+heatpump__2__324a4954,heat-pump-warranty,stall,2_ledger_review,deepseek_resample,2,,nothing,True,True,False,False,False,False,0,0,True,,0.0068
+heatpump__2__324a4954,heat-pump-warranty,stall,2_ledger_review,deepseek_outside_observer,0,,nothing,True,True,False,False,False,False,0,0,True,,0.00178
+heatpump__2__324a4954,heat-pump-warranty,stall,2_ledger_review,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00131
+heatpump__2__324a4954,heat-pump-warranty,stall,2_ledger_review,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00181
+heatpump__2__324a4954,heat-pump-warranty,stall,2_ledger_review,opus,0,,C67 drop20 keep5,True,False,True,False,False,False,20,5,False,original,
+heatpump__3__d5956d84,heat-pump-warranty,stall,3_context_review,worker,0,main-stalled-a__heatpump__3_context_review__r0,nothing,True,True,False,False,False,False,0,0,True,,
+heatpump__3__d5956d84,heat-pump-warranty,stall,3_context_review,worker,1,main-stalled-b__heatpump__3_context_review__r0,nothing,True,True,False,False,False,False,0,0,True,,
+heatpump__3__d5956d84,heat-pump-warranty,stall,3_context_review,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.03794
+heatpump__3__d5956d84,heat-pump-warranty,stall,3_context_review,deepseek_resample,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00117
+heatpump__3__d5956d84,heat-pump-warranty,stall,3_context_review,deepseek_resample,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00153
+heatpump__3__d5956d84,heat-pump-warranty,stall,3_context_review,deepseek_outside_observer,0,,nothing,True,True,False,False,False,False,0,0,True,,0.0399
+heatpump__3__d5956d84,heat-pump-warranty,stall,3_context_review,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00114
+heatpump__3__d5956d84,heat-pump-warranty,stall,3_context_review,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00168
+heatpump__3__d5956d84,heat-pump-warranty,stall,3_context_review,opus,0,,drop18,True,False,False,False,False,False,18,0,True,original,
+production__2__f66b05d1,production-planning,stall,2_ledger_review,worker,0,main-stalled-a__production__2_ledger_review__r0,nothing,True,True,False,False,False,False,0,0,True,,
+production__2__f66b05d1,production-planning,stall,2_ledger_review,worker,1,main-stalled-b__production__2_ledger_review__r0,O3 drop6,True,False,False,False,False,True,6,0,True,,
+production__2__f66b05d1,production-planning,stall,2_ledger_review,deepseek_resample,0,,C6 O6 drop3 keep9,True,False,True,False,False,False,3,9,False,,0.03444
+production__2__f66b05d1,production-planning,stall,2_ledger_review,deepseek_resample,1,,drop22,True,False,False,False,False,False,22,0,False,,0.03515
+production__2__f66b05d1,production-planning,stall,2_ledger_review,deepseek_resample,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00087
+production__2__f66b05d1,production-planning,stall,2_ledger_review,deepseek_outside_observer,0,,nothing,True,True,False,False,False,False,0,0,True,,0.03982
+production__2__f66b05d1,production-planning,stall,2_ledger_review,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.0152
+production__2__f66b05d1,production-planning,stall,2_ledger_review,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.01686
+production__2__f66b05d1,production-planning,stall,2_ledger_review,opus,0,,C17 drop3 keep70,True,False,True,False,False,False,3,70,True,notes,
+production__3__40a05d6d,production-planning,stall,3_context_review,worker,0,main-stalled-a__production__3_context_review__r0,nothing,True,True,False,False,False,False,0,0,True,,
+production__3__40a05d6d,production-planning,stall,3_context_review,worker,1,main-stalled-b__production__3_context_review__r0,nothing,True,True,False,False,False,False,0,0,True,,
+production__3__40a05d6d,production-planning,stall,3_context_review,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.00088
+production__3__40a05d6d,production-planning,stall,3_context_review,deepseek_resample,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00104
+production__3__40a05d6d,production-planning,stall,3_context_review,deepseek_resample,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00106
+production__3__40a05d6d,production-planning,stall,3_context_review,deepseek_outside_observer,0,,nothing,True,True,False,False,False,False,0,0,True,,0.02985
+production__3__40a05d6d,production-planning,stall,3_context_review,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00543
+production__3__40a05d6d,production-planning,stall,3_context_review,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00142
+production__3__40a05d6d,production-planning,stall,3_context_review,opus,0,,C11 drop1 keep5,True,False,True,False,False,False,1,5,True,notes,
+healthy-2255__2__df5bd516,atrx-vep-crispr,healthy,2_ledger_review,worker,0,harm__healthy-2255__2_ledger_review__r0,drop4,True,False,False,False,False,False,4,0,True,,
+healthy-2255__2__df5bd516,atrx-vep-crispr,healthy,2_ledger_review,worker,1,harm__healthy-2255__2_ledger_review__r1,nothing,True,True,False,False,False,False,0,0,True,,
+healthy-2255__2__df5bd516,atrx-vep-crispr,healthy,2_ledger_review,deepseek_resample,0,,drop3,True,False,False,False,False,False,3,0,True,,0.05957
+healthy-2255__2__df5bd516,atrx-vep-crispr,healthy,2_ledger_review,deepseek_resample,1,,drop4,True,False,False,False,False,False,4,0,False,,0.02336
+healthy-2255__2__df5bd516,atrx-vep-crispr,healthy,2_ledger_review,deepseek_resample,2,,drop5,True,False,False,False,False,False,5,0,True,,0.01443
+healthy-2255__2__df5bd516,atrx-vep-crispr,healthy,2_ledger_review,deepseek_outside_observer,0,,drop3,True,False,False,False,False,False,3,0,True,,0.0538
+healthy-2255__2__df5bd516,atrx-vep-crispr,healthy,2_ledger_review,deepseek_outside_observer,1,,drop2,True,False,False,False,False,False,2,0,False,,0.02932
+healthy-2255__2__df5bd516,atrx-vep-crispr,healthy,2_ledger_review,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.04243
+healthy-2255__2__df5bd516,atrx-vep-crispr,healthy,2_ledger_review,opus,0,,drop34,True,False,False,False,False,False,34,0,True,original,
+healthy-af1c__2__9c690944,mvcc-lsm-compaction,healthy,2_ledger_review,worker,0,harm__healthy-af1c__2_ledger_review__r0,nothing,True,True,False,False,False,False,0,0,True,,
+healthy-af1c__2__9c690944,mvcc-lsm-compaction,healthy,2_ledger_review,worker,1,harm__healthy-af1c__2_ledger_review__r1,nothing,True,True,False,False,False,False,0,0,True,,
+healthy-af1c__2__9c690944,mvcc-lsm-compaction,healthy,2_ledger_review,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.01275
+healthy-af1c__2__9c690944,mvcc-lsm-compaction,healthy,2_ledger_review,deepseek_resample,1,,C19 R19 O19,True,False,True,False,True,False,0,0,True,,0.0118
+healthy-af1c__2__9c690944,mvcc-lsm-compaction,healthy,2_ledger_review,deepseek_resample,2,,C19 R19 O19 keep3,True,False,True,False,True,False,0,3,True,,0.00608
+healthy-af1c__2__9c690944,mvcc-lsm-compaction,healthy,2_ledger_review,deepseek_outside_observer,0,,nothing,True,True,False,False,False,False,0,0,True,,0.029
+healthy-af1c__2__9c690944,mvcc-lsm-compaction,healthy,2_ledger_review,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.01338
+healthy-af1c__2__9c690944,mvcc-lsm-compaction,healthy,2_ledger_review,deepseek_outside_observer,2,,C19 R19 O19 keep1,True,False,True,False,True,False,0,1,True,,0.03401
+healthy-af1c__2__9c690944,mvcc-lsm-compaction,healthy,2_ledger_review,opus,0,,drop2,True,False,False,False,False,False,2,0,True,original,
+healthy-cd83__2__d1230b63,production-planning,healthy,2_ledger_review,worker,0,harm__healthy-cd83__2_ledger_review__r0,drop8,True,False,False,False,False,False,8,0,True,,
+healthy-cd83__2__d1230b63,production-planning,healthy,2_ledger_review,worker,1,harm__healthy-cd83__2_ledger_review__r1,nothing,True,True,False,False,False,False,0,0,True,,
+healthy-cd83__2__d1230b63,production-planning,healthy,2_ledger_review,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.00679
+healthy-cd83__2__d1230b63,production-planning,healthy,2_ledger_review,deepseek_resample,1,,drop3,True,False,False,False,False,False,3,0,True,,0.00457
+healthy-cd83__2__d1230b63,production-planning,healthy,2_ledger_review,deepseek_resample,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00048
+healthy-cd83__2__d1230b63,production-planning,healthy,2_ledger_review,deepseek_outside_observer,0,,drop3,True,False,False,False,False,False,3,0,True,,0.02492
+healthy-cd83__2__d1230b63,production-planning,healthy,2_ledger_review,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00729
+healthy-cd83__2__d1230b63,production-planning,healthy,2_ledger_review,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.01103
+healthy-cd83__2__d1230b63,production-planning,healthy,2_ledger_review,opus,0,,drop2,True,False,False,False,False,False,2,0,False,original,
+atrx__7__66e39bf9,atrx-vep-crispr,stall,7_ledger_review_anytime,worker,0,anytime__atrx__7_ledger_review_anytime__r0__o1,nothing,True,True,False,False,False,False,0,0,True,,
+atrx__7__66e39bf9,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.00169
+atrx__7__66e39bf9,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_resample,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00224
+atrx__7__66e39bf9,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_resample,2,,nothing,True,True,False,False,False,False,0,0,True,,0.06559
+atrx__7__66e39bf9,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_outside_observer,0,,nothing,True,True,False,False,False,False,0,0,False,,0.00519
+atrx__7__66e39bf9,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.06555
+atrx__7__66e39bf9,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.01278
+atrx__7__66e39bf9,atrx-vep-crispr,stall,7_ledger_review_anytime,opus,0,,C91 drop7 keep6,True,False,True,False,False,False,7,6,True,notes,
+atrx__7__df6954e8,atrx-vep-crispr,stall,7_ledger_review_anytime,worker,0,anytime__atrx__7_ledger_review_anytime__r0__o2,nothing,True,True,False,False,False,False,0,0,True,,
+atrx__7__df6954e8,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.00196
+atrx__7__df6954e8,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_resample,1,,nothing,True,True,False,False,False,False,0,0,False,,0.00155
+atrx__7__df6954e8,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_resample,2,,empty,False,,,,,,,,False,,0.00476
+atrx__7__df6954e8,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_outside_observer,0,,empty,False,,,,,,,,False,,0.05071
+atrx__7__df6954e8,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00308
+atrx__7__df6954e8,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00162
+atrx__7__df6954e8,atrx-vep-crispr,stall,7_ledger_review_anytime,opus,0,,C90 drop2 keep1,True,False,True,False,False,False,2,1,True,original,
+atrx__7__7576b859,atrx-vep-crispr,stall,7_ledger_review_anytime,worker,0,anytime__atrx__7_ledger_review_anytime__r0__o3,nothing,True,True,False,False,False,False,0,0,True,,
+atrx__7__7576b859,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.00193
+atrx__7__7576b859,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_resample,1,,nothing,True,True,False,False,False,False,0,0,False,,0.00223
+atrx__7__7576b859,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_resample,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00278
+atrx__7__7576b859,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_outside_observer,0,,nothing,True,True,False,False,False,False,0,0,True,,0.03709
+atrx__7__7576b859,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.01231
+atrx__7__7576b859,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00202
+atrx__7__7576b859,atrx-vep-crispr,stall,7_ledger_review_anytime,opus,0,,C74 drop4,True,False,True,False,False,False,4,0,True,original,
+atrx__7__6e851914,atrx-vep-crispr,stall,7_ledger_review_anytime,worker,0,anytime__atrx__7_ledger_review_anytime__r0__o4,nothing,True,True,False,False,False,False,0,0,True,,
+atrx__7__6e851914,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,False,,0.00736
+atrx__7__6e851914,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_resample,1,,nothing,True,True,False,False,False,False,0,0,False,,0.01712
+atrx__7__6e851914,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_resample,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00215
+atrx__7__6e851914,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_outside_observer,0,,empty,False,,,,,,,,False,,0.00274
+atrx__7__6e851914,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.07983
+atrx__7__6e851914,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00243
+atrx__7__6e851914,atrx-vep-crispr,stall,7_ledger_review_anytime,opus,0,,C91 drop9 keep7,True,False,True,False,False,False,9,7,False,notes,
+atrx__7__9ae689b8,atrx-vep-crispr,stall,7_ledger_review_anytime,worker,0,anytime__atrx__7_ledger_review_anytime__r1__o1,nothing,True,True,False,False,False,False,0,0,True,,
+atrx__7__9ae689b8,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.05376
+atrx__7__9ae689b8,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_resample,1,,nothing,True,True,False,False,False,False,0,0,True,,0.02508
+atrx__7__9ae689b8,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_resample,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00199
+atrx__7__9ae689b8,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_outside_observer,0,,nothing,True,True,False,False,False,False,0,0,True,,0.05577
+atrx__7__9ae689b8,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00406
+atrx__7__9ae689b8,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00227
+atrx__7__9ae689b8,atrx-vep-crispr,stall,7_ledger_review_anytime,opus,0,,C91 drop10 keep3,True,False,True,False,False,False,10,3,False,original,
+atrx__7__c8016a92,atrx-vep-crispr,stall,7_ledger_review_anytime,worker,0,anytime__atrx__7_ledger_review_anytime__r1__o2,nothing,True,True,False,False,False,False,0,0,True,,
+atrx__7__c8016a92,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.03943
+atrx__7__c8016a92,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_resample,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00196
+atrx__7__c8016a92,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_resample,2,,nothing,True,True,False,False,False,False,0,0,False,,0.00153
+atrx__7__c8016a92,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_outside_observer,0,,C91 O91 drop4 keep2,True,False,True,False,False,False,4,2,True,,0.02157
+atrx__7__c8016a92,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.02476
+atrx__7__c8016a92,atrx-vep-crispr,stall,7_ledger_review_anytime,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.02894
+atrx__7__c8016a92,atrx-vep-crispr,stall,7_ledger_review_anytime,opus,0,,drop16,True,False,False,False,False,False,16,0,True,original,
+heatpump__7__0aad22e7,heat-pump-warranty,stall,7_ledger_review_anytime,worker,0,anytime__heatpump__7_ledger_review_anytime__r0__o1,nothing,True,True,False,False,False,False,0,0,True,,
+heatpump__7__0aad22e7,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.04717
+heatpump__7__0aad22e7,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_resample,1,,R50,True,False,False,False,True,False,0,0,True,,0.02477
+heatpump__7__0aad22e7,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_resample,2,,nothing,True,True,False,False,False,False,0,0,True,,0.04715
+heatpump__7__0aad22e7,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_outside_observer,0,,nothing,True,True,False,False,False,False,0,0,True,,0.02143
+heatpump__7__0aad22e7,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.04857
+heatpump__7__0aad22e7,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00503
+heatpump__7__0aad22e7,heat-pump-warranty,stall,7_ledger_review_anytime,opus,0,,drop3,True,False,False,False,False,False,3,0,True,notes,
+heatpump__7__c3a664bd,heat-pump-warranty,stall,7_ledger_review_anytime,worker,0,anytime__heatpump__7_ledger_review_anytime__r0__o2,nothing,True,True,False,False,False,False,0,0,True,,
+heatpump__7__c3a664bd,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.03531
+heatpump__7__c3a664bd,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_resample,1,,nothing,True,True,False,False,False,False,0,0,True,,0.03556
+heatpump__7__c3a664bd,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_resample,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00161
+heatpump__7__c3a664bd,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_outside_observer,0,,nothing,True,True,False,False,False,False,0,0,True,,0.03655
+heatpump__7__c3a664bd,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.02881
+heatpump__7__c3a664bd,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.00951
+heatpump__7__c3a664bd,heat-pump-warranty,stall,7_ledger_review_anytime,opus,0,,drop14,True,False,False,False,False,False,14,0,True,original,
+heatpump__7__3f27fed5,heat-pump-warranty,stall,7_ledger_review_anytime,worker,0,anytime__heatpump__7_ledger_review_anytime__r1__o1,nothing,True,True,False,False,False,False,0,0,True,,
+heatpump__7__3f27fed5,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.07244
+heatpump__7__3f27fed5,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_resample,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00646
+heatpump__7__3f27fed5,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_resample,2,,R50,True,False,False,False,True,False,0,0,True,,0.02725
+heatpump__7__3f27fed5,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_outside_observer,0,,nothing,True,True,False,False,False,False,0,0,True,,0.07257
+heatpump__7__3f27fed5,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.01309
+heatpump__7__3f27fed5,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_outside_observer,2,,R50,True,False,False,False,True,False,0,0,True,,0.02537
+heatpump__7__3f27fed5,heat-pump-warranty,stall,7_ledger_review_anytime,opus,0,,C69 drop3 keep8,True,False,True,False,False,False,3,8,False,notes,
+heatpump__7__829846cf,heat-pump-warranty,stall,7_ledger_review_anytime,worker,0,anytime__heatpump__7_ledger_review_anytime__r1__o2,nothing,True,True,False,False,False,False,0,0,True,,
+heatpump__7__829846cf,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_resample,0,,nothing,True,True,False,False,False,False,0,0,True,,0.00369
+heatpump__7__829846cf,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_resample,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00333
+heatpump__7__829846cf,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_resample,2,,nothing,True,True,False,False,False,False,0,0,True,,0.0586
+heatpump__7__829846cf,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_outside_observer,0,,nothing,True,True,False,False,False,False,0,0,True,,0.01104
+heatpump__7__829846cf,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_outside_observer,1,,nothing,True,True,False,False,False,False,0,0,True,,0.00655
+heatpump__7__829846cf,heat-pump-warranty,stall,7_ledger_review_anytime,deepseek_outside_observer,2,,nothing,True,True,False,False,False,False,0,0,True,,0.06239
+heatpump__7__829846cf,heat-pump-warranty,stall,7_ledger_review_anytime,opus,0,,C88 keep5,True,False,True,False,False,False,0,5,True,original,
+production__7__d885c23c,production-planning,stall,7_ledger_review_anytime,worker,0,anytime__production__7_ledger_review_anytime__r0__o1,W0 drop6,True,False,False,True,False,False,6,0,True,,
+production__7__d885c23c,production-planning,stall,7_ledger_review_anytime,deepseek_resample,0,,W38 O38,True,False,False,True,False,False,0,0,True,,0.10347
+production__7__d885c23c,production-planning,stall,7_ledger_review_anytime,deepseek_resample,1,,empty,False,,,,,,,,False,,0.01231
+production__7__d885c23c,production-planning,stall,7_ledger_review_anytime,deepseek_resample,2,,W38,True,False,False,True,False,False,0,0,True,,0.0737
+production__7__d885c23c,production-planning,stall,7_ledger_review_anytime,deepseek_outside_observer,0,,W38,True,False,False,True,False,False,0,0,True,,0.02158
+production__7__d885c23c,production-planning,stall,7_ledger_review_anytime,deepseek_outside_observer,1,,W38,True,False,False,True,False,False,0,0,True,,0.0205
+production__7__d885c23c,production-planning,stall,7_ledger_review_anytime,deepseek_outside_observer,2,,W38,True,False,False,True,False,False,0,0,True,,0.03706
+production__7__d885c23c,production-planning,stall,7_ledger_review_anytime,opus,0,,W38 drop2,True,False,False,True,False,False,2,0,False,notes,
+production__7__4ee677e6,production-planning,stall,7_ledger_review_anytime,worker,0,anytime__production__7_ledger_review_anytime__r1__o1,C0 keep6,True,False,True,False,False,False,0,6,True,,
+production__7__4ee677e6,production-planning,stall,7_ledger_review_anytime,deepseek_resample,0,,drop18,True,False,False,False,False,False,18,0,True,,0.03331
+production__7__4ee677e6,production-planning,stall,7_ledger_review_anytime,deepseek_resample,1,,C3 O3 keep18,True,False,True,False,False,False,0,18,False,,0.00269
+production__7__4ee677e6,production-planning,stall,7_ledger_review_anytime,deepseek_resample,2,,drop11,True,False,False,False,False,False,11,0,False,,0.00396
+production__7__4ee677e6,production-planning,stall,7_ledger_review_anytime,deepseek_outside_observer,0,,drop4,True,False,False,False,False,False,4,0,True,,0.01082
+production__7__4ee677e6,production-planning,stall,7_ledger_review_anytime,deepseek_outside_observer,1,,C17 drop5 keep47,True,False,True,False,False,False,5,47,False,,0.04459
+production__7__4ee677e6,production-planning,stall,7_ledger_review_anytime,deepseek_outside_observer,2,,C18 drop9 keep34,True,False,True,False,False,False,9,34,False,,0.02616
+production__7__4ee677e6,production-planning,stall,7_ledger_review_anytime,opus,0,,C17 drop4 keep57,True,False,True,False,False,False,4,57,True,notes,
+production__7__db6cf4ab,production-planning,stall,7_ledger_review_anytime,worker,0,anytime__production__7_ledger_review_anytime__r1__o2,drop55,True,False,False,False,False,False,55,0,True,,
+production__7__db6cf4ab,production-planning,stall,7_ledger_review_anytime,deepseek_resample,0,,none,False,,,,,,,,False,,0.01918
+production__7__db6cf4ab,production-planning,stall,7_ledger_review_anytime,deepseek_resample,1,,W54 C0 O0,True,False,True,True,False,False,0,0,True,,0.01117
+production__7__db6cf4ab,production-planning,stall,7_ledger_review_anytime,deepseek_resample,2,,C0 O0,True,False,True,False,False,False,0,0,True,,0.00516
+production__7__db6cf4ab,production-planning,stall,7_ledger_review_anytime,deepseek_outside_observer,0,,W54,True,False,False,True,False,False,0,0,True,,0.10869
+production__7__db6cf4ab,production-planning,stall,7_ledger_review_anytime,deepseek_outside_observer,1,,W54 drop1,True,False,False,True,False,False,1,0,True,,0.11037
+production__7__db6cf4ab,production-planning,stall,7_ledger_review_anytime,deepseek_outside_observer,2,,W54,True,False,False,True,False,False,0,0,True,,0.00941
+production__7__db6cf4ab,production-planning,stall,7_ledger_review_anytime,opus,0,,W54 C59 drop28 keep11,True,False,True,True,False,False,28,11,False,notes,

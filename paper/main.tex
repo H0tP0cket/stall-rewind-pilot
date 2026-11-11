@@ -43,11 +43,12 @@ agent will undo it when given the tools. Every run is checkpointed so that a bra
 runtime and its context to any earlier step. A stall judge marks where each stall began. Six arms then branch from the
 stall: continue; a one-turn review over a labelled ``Ledger'' of the run or over the plain context, with the power to
 rewind any of the four parts or drop items; the same two views as read-only notes; and a forced rewind of everything
-to the judged onset. In this pilot the forced rewind solved 3 of 6 branches against 2 of 6 for continue, helping on a
-stuck stall (2/2 vs.\ 0/2) and an under-commit stall (1/2 vs.\ 0/2) but not on an over-commit stall (0/2 vs.\ 2/2).
-The agent itself never rewound its context or files in 24 review turns, including 12 in which it was told
-``This run looks stalled.'' An injection test on healthy runs shows the opposite pressure: inserting a real failed
-attempt together with its failure into a run that otherwise solves dropped it to 0/2. The pilot cost \$19.97.
+to the judged onset. In this pilot the forced rewind solved 3 of 6 branches against 2 of 6 for continue. On one stall
+the difference is clear once the screen is pooled with the arms: rerunning from three steps before the stall solved 5
+of 7 branches and continuing solved 0 of 7. On the other two stalls the two are not distinguishable (3/7 vs.\ 4/7 and
+2/7 vs.\ 4/7). The agent itself never rewound its context or files in 24 review turns, including 12 in which it was told
+``This run looks stalled.'' An injection test on healthy runs gives one hint: on the one informative checkpoint,
+inserting a real failed attempt together with its failure gave 0/2 against 2/2 untouched. The pilot cost \$19.97.
 \end{abstract}
 
 \section{Question}
@@ -117,8 +118,8 @@ model: real container restores, real review turns, real splices, one real graded
 \begin{table}[t]
 \centering
 \small
-\caption{Solved branches out of branches run. The screen (left) used the earlier feedback line
-``Hidden tests still failing: N.''; the arms used the current line.}
+\caption{Solved branches out of branches run. The production-planning and ATRX screens (left) used the earlier
+feedback line ``Hidden tests still failing: N.''; the heat-pump screen and all arms used the current line.}
 \label{tab:main}
 \resizebox{\linewidth}{!}{\input{tables/main.tex}}
 \end{table}
@@ -131,13 +132,16 @@ under-commit stalls, and the only one that never solved the over-commit stall.}
 \label{fig:main}
 \end{figure}
 
-\paragraph{Forced rewind helped two stall types and hurt the third.}
+\paragraph{Forced rewind clearly helped on one stall.}
 On the stuck production-planning stall every arm that kept the stalled state ended at 90\% of hidden tests passing
-(0/10; one branch never submitted), while both forced rewinds solved on their first submission (Figure~\ref{fig:main}). On the under-commit ATRX
-stall, every kept-state branch ended at exactly 56\% (0/10), the same grade the source run was stuck at; one of two
-forced rewinds solved. On the over-commit heat-pump stall the order flipped: continue solved 2/2 and forced rewind
-0/2. The type judge's label lines up with the sign of the effect in all three cases, which is the hypothesis a full
-run should test.
+(0/10; one branch never submitted), while both forced rewinds solved on their first submission (Figure~\ref{fig:main}).
+Pooled with the screen, rerunning from three steps before the stall solved 5 of 7 branches and continuing solved 0 of
+7 (two-sided Fisher exact $p = 0.021$; one stall, and the screen and the arms used different feedback lines). On the
+under-commit ATRX stall, every kept-state branch ended at exactly 56\% (0/10), the same grade the source run was stuck
+at; one of two forced rewinds solved. On the over-commit heat-pump stall continue solved 2/2 and forced rewind 0/2.
+With two branches per arm these two differences are within noise: pooled with the screen, continue and forced rewind
+solved 4/7 and 3/7 on ATRX and 4/7 and 2/7 on heat-pump. Whether the stall type predicts the direction is a
+hypothesis for a larger run, not a result.
 
 \begin{figure}[t]
 \centering
@@ -170,18 +174,18 @@ also very long (0.9--1.2 million characters), which favours keeping everything.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.66\linewidth]{../figures/fig3_injection_atrx.pdf}
-\caption{Injection test on the one informative healthy checkpoint. Real failed-attempt material lowers solving;
-neutral filler and stale output do not.}
+\caption{Injection test on the one informative healthy checkpoint, two branches per condition.}
 \label{fig:injection}
 \end{figure}
 
-\paragraph{Failed attempts are contagious.}
-Only one healthy checkpoint was informative. Under the pilot's caps the production checkpoint solved in none of its
+\paragraph{A hint that a failed attempt carries over.}
+Only one healthy checkpoint was informative, so this is a hint and not a result. Under the pilot's caps the production checkpoint solved in none of its
 control branches, and the mvcc checkpoint's workspace already passed the hidden tests, so every mvcc branch solved on
 its first submission whatever was inserted (Table~\ref{tab:injection}). On the ATRX checkpoint, which solved 2/2
 untouched, neutral filler and stale output left it at 2/2; a false success claim, the failed approach before its
 failure, and the failed run's leftover report file each cost one of two; and the failed approach shown through its
-failure dropped it to 0/2, both branches settling at the donor's 56\% (Figure~\ref{fig:injection}).
+failure gave 0/2, both branches settling at the donor's 56\% (Figure~\ref{fig:injection}; 0/2 against 2/2 is a
+two-sided Fisher exact $p = 0.33$).
 
 \begin{table}[t]
 \centering
@@ -196,14 +200,30 @@ excerpt existed).}
 the untouched controls (production 0/2 and 0/2, ATRX 2/2 and 2/2, mvcc 2/2 and 2/2); four of six reviews changed
 nothing and two dropped old outputs.
 
+\paragraph{Follow-up runs (2026-11-04).}
+Three additions after the pilot, each on the same three stalls with two repeats. \emph{Any-time review:} the worker
+continued from the stall with a tool that opens the Ledger review whenever it chooses. It solved 3 of 6 branches
+(production 1/2, ATRX 0/2, heat-pump 2/2). The review was opened 13 times; 10 openings changed nothing, 1 only dropped
+context, and 2 rewound, both on production: one rewound the files to the start and dropped six steps, and that branch
+solved on its first submission. \emph{Observer choices:} the 28 distinct review requests behind all 43 worker review
+turns were also given to the worker model again (three answers each, 84 in total), to the worker model framed as an
+outside observer (84), and to Opus 5.5 as an outside observer (28); none of these answers was executed. The worker
+rewound context, files or runtime in 2 of its 43 turns. Asked again it rewound in 12 of 84 answers, and as an outside
+observer in 13 of 84. Opus changed something at 28 of 28 requests and rewound at 18. \emph{Opus decides:} the Ledger
+review arm was rerun with Opus's recorded decision executed in place of the worker's. It solved 2 of 6 branches
+(production 1/2, ATRX 0/2, heat-pump 1/2), the same as the Ledger review with the worker deciding (2/6). At this size
+that is no evidence either way on whether a stronger decider helps. The plan that follows from these results is in
+the repository README and replaces Section~\ref{sec:next}.
+
 \section{Limitations}
 \label{sec:limits}
 
 \begin{itemize}[leftmargin=*,itemsep=1pt,topsep=2pt]
   \item \textbf{Size.} Three stalls and two repeats per cell; every comparison above is a few branches.
-  \item \textbf{Feedback wording changed between screen and arms.} The screen used ``Hidden tests still failing:
-  N.''; the arms used the current line. ATRX continue went from 4/5 in the screen to 0/2, and heat-pump continue from
-  2/5 to 2/2, so the wording may matter as much as the arm.
+  \item \textbf{Feedback wording changed between screen and arms for two stalls.} The production-planning and ATRX
+  screens used ``Hidden tests still failing: N.''; the heat-pump screen and all arms used the current line. ATRX
+  continue went from 4/5 in the screen to 0/2, so the wording may matter as much as the arm. Heat-pump continue went
+  from 2/5 to 2/2 under the same line, which shows how much two branches can vary.
   \item \textbf{Healthy checkpoints.} Two of three were uninformative (one never solved under the caps, one was already
   solved), so the injection result rests on one checkpoint.
   \item \textbf{Review material.} The views were close to a full context in length, and the review came before any

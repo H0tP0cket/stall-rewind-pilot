@@ -17,6 +17,7 @@ FIG = ROOT / "figures"
 ROWS = list(csv.DictReader((ROOT / "data/branches.csv").open()))
 DECISIONS = json.loads((ROOT / "data/review_decisions.json").read_text())
 SCREEN = {(r["stall_id"], r["set"]): r for r in csv.DictReader((ROOT / "data/screen.csv").open())}
+OBSERVER = list(csv.DictReader((ROOT / "data/observer_choices.csv").open()))
 
 SURFACE, INK, INK2, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#e4e3df"
 NEUTRAL, NEUTRAL_LIGHT = "#9b9a94", "#cfcec8"
@@ -131,9 +132,56 @@ def fig_injection():
     save(fig, "fig3_injection_atrx")
 
 
+def fig_who_rewinds():
+    """Every answer to the same review requests, by who answered (same categories as analysis/make_tables.py, with
+    the one outputs-only rewind shown with the trims)."""
+    choosers = [("worker", "The worker itself\n(its actual choice)"),
+                ("deepseek_resample", "Worker model,\nasked again"),
+                ("deepseek_outside_observer", "Worker model,\nas outside observer"),
+                ("opus", "Opus 5.5,\nas outside observer")]
+    cats = [("Changed nothing", NEUTRAL, "white"), ("Trimmed context or outputs only", BLUE, "white"),
+            ("Rewound context, files or runtime", ORANGE, "white"), ("No usable answer", NEUTRAL_LIGHT, INK)]
+
+    def kind(r):
+        if r["usable_answer"] != "True":
+            return 3
+        if "True" in (r["rewound_context"], r["rewound_files"], r["rewound_runtime"]):
+            return 2
+        if r["rewound_outputs_only"] == "True" or int(r["n_drops"]) + int(r["n_keeps"]) > 0:
+            return 1
+        return 0
+
+    fig, ax = plt.subplots(figsize=(7.4, 2.5))
+    labels = []
+    for i, (key, label) in enumerate(choosers[::-1]):
+        rs = [r for r in OBSERVER if r["chooser"] == key]
+        counts = [sum(kind(r) == c for r in rs) for c in range(len(cats))]
+        labels.append(f"{label}  (n={len(rs)})")
+        left = 0.0
+        for (cname, color, ink), v in zip(cats, counts):
+            share = 100 * v / len(rs)
+            if v:
+                ax.barh(i, max(share - 0.4, 0.2), left=left + 0.2, height=0.62, color=color, linewidth=0)
+                if share >= 4:
+                    ax.text(left + share / 2, i, str(v), ha="center", va="center", fontsize=8, color=ink)
+            left += share
+    n_req = len({r["request_id"] for r in OBSERVER})
+    ax.set_yticks(range(len(choosers)))
+    ax.set_yticklabels(labels)
+    ax.set_xlim(0, 100)
+    ax.set_xticks([0, 25, 50, 75, 100])
+    ax.set_xlabel(f"share of answers to the same {n_req} review requests (%); numbers are answers")
+    ax.tick_params(length=0)
+    handles = [plt.Rectangle((0, 0), 1, 1, color=c) for _, c, _ in cats]
+    ax.legend(handles, [c[0] for c in cats], loc="upper center", bbox_to_anchor=(0.36, 1.3), ncol=2, frameon=False,
+              fontsize=8)
+    save(fig, "fig4_who_rewinds")
+
+
 if __name__ == "__main__":
     FIG.mkdir(exist_ok=True)
     fig_main()
     fig_decisions()
     fig_injection()
+    fig_who_rewinds()
     print("figures written to", FIG)
